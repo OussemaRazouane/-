@@ -28,7 +28,7 @@ class _HomeState extends State<Home> {
   "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ , وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ , اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ.",
   ];
   int index=0;
-  int reapt=0;
+  int count=0;
   int round=0;
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class _HomeState extends State<Home> {
               height: MediaQuery.of(context).size.height/4,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color:const Color.fromARGB(167, 194, 170, 170),
+                color:const Color.fromARGB(203, 194, 170, 170),
               ),
               child:Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -76,29 +76,34 @@ class _HomeState extends State<Home> {
                         if(index>tasbeh.length-1) index=0;
                       });
                     },
-                    icon: const Icon(Icons.arrow_back_ios_new,),
+                    icon: const Icon(Icons.arrow_forward_ios,),
                   ),
               ],),
             ),
-            Text("$reapt/32",textAlign:TextAlign.center ,style:const TextStyle(fontSize: 25, fontWeight: FontWeight.bold,) ,),
-            Text("Round $round",textAlign:TextAlign.center ,style:const TextStyle(fontSize: 25, fontWeight: FontWeight.bold,) ,),
+            Text("$count/32",textAlign:TextAlign.center ,style:const TextStyle(fontSize: 30, fontWeight: FontWeight.bold,color:Color.fromARGB(255, 255, 255, 255),backgroundColor:Color.fromARGB(203, 194, 170, 170)) ,),
+            Text("Round $round",textAlign:TextAlign.center ,style:const TextStyle(fontSize: 25, fontWeight: FontWeight.bold,color:Color.fromARGB(255, 255, 255, 255),backgroundColor:Color.fromARGB(203, 194, 170, 170)) ,),
             OutlinedButton(
               onPressed: (){
                 setState(() {
-                  
+                  index=0;
+                  count=0;
+                  round=0;
                 });
               }, 
-              child:const Text("Reset"),
+              child:const Text("Reset",style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold,color:Color.fromARGB(255, 255, 255, 255),backgroundColor:Color.fromARGB(203, 194, 170, 170))),
             ),
             GestureDetector(
               onTap:(){
                 setState(() {
-                  
+                  count++;
+                  count = count%33;
+                  if(count==0) round++;
                 });
               },
               child:const CircleAvatar(
+                radius:85,
                 backgroundColor: Color.fromARGB(255, 36, 185, 151),
-                child:Text("Sabe7",textAlign:TextAlign.center ,style:TextStyle(fontSize: 25, fontWeight: FontWeight.bold,) ,),
+                child:Text("سبح",textAlign:TextAlign.center ,style:TextStyle(fontSize: 27, fontWeight: FontWeight.bold,) ,),
               ) ,
             )
           ],
